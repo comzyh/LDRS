@@ -3,7 +3,7 @@
 # @Author: Comzyh
 # @Date:   2015-06-09 01:00:47
 # @Last Modified by:   Comzyh
-# @Last Modified time: 2016-04-01 01:34:51
+# @Last Modified time: 2016-04-03 18:26:43
 
 import re
 import json
@@ -99,9 +99,8 @@ def scan(pool, ip_list):
     ping_results = []
     try:
         pool.map(ping_warp, ip_list)
-    except Exception, e:
-        logging.error(e)
-        raise
+    except Exception:
+        logging.exception("Scan Error")
 
     ping_results = [result for result in ping_results if result[1]]
     arp_table = get_arp_table()
@@ -123,8 +122,8 @@ def report(scan_result):
             resp = requests.post(url, data=json_str, timeout=10)
             logging.info(resp)
             logging.info(resp.text)
-        except Exception, e:
-            logging.error(e)
+        except Exception:
+            logging.exception("Report Failed")
 
 
 def main():
