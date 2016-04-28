@@ -62,7 +62,7 @@ https://telegram.me/BotFather
 
 输入
 
-> /start
+> /start  
 > /newbot
 
 按照提示输入你的 BOT 的name 和 username ，BOT 创建完成，然后你会得到一个BOT 的 token
